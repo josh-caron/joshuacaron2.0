@@ -13,6 +13,7 @@ export const siteConfig = {
     email: "j.caron@ufl.edu",
     linkedin: "https://linkedin.com/in/-joshuacaron-",
     github: "https://github.com/josh-caron",
+    resume: "/Joshua_Caron_Resume.pdf",
   },
   aboutMe:
     "I have a passion for making education more impactful and efficient for students, especially those who I teach physics to through Study Edge in Gainesville, FL. I will be graduating UF three semesters early in Fall 2026.\n\nMy tentative future plans are to join Study Edge as a full time lecturer and curriculum planner in January 2027, and to pursue a PhD in Computer Science in Fall 2027.",
