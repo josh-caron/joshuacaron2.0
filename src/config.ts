@@ -3,85 +3,70 @@ export const siteConfig = {
   title: "A Second Year CS + Math Student at UF",
   description: "Portfolio website of Josh Caron",
   accentColor: "#1d4ed8",
+  
   funFacts: [
     "I created a 31-video Calculus II lecture series on YouTube at 16 years old",
     "I have a ServSafe Food Manager Certification",
     "I'm pursuing a PhD in Computer Science starting Fall 2027",
-    "I completed over 1,000 college-level tutoring hours before attending UF",
+    "I received UF's Outstanding CISE Undergraduate Award in Spring 2026",
   ],
+  
   social: {
     email: "j.caron@ufl.edu",
     linkedin: "https://linkedin.com/in/-joshuacaron-",
     github: "https://github.com/josh-caron",
     resume: "/Joshua_Caron_Resume.pdf",
   },
+  
   aboutMe:
     "I have a passion for making education more impactful and efficient for students, especially those who I teach physics to through Study Edge in Gainesville, FL. I will be graduating UF three semesters early in Fall 2026.\n\nMy tentative future plans are to join Study Edge as a full time lecturer and curriculum planner in January 2027, and to pursue a PhD in Computer Science in Fall 2027.",
+  
   skills: [],
-  // projects: [
-  //   {
-  //     name: "AI Dev Roundup Newsletter",
-  //     description:
-  //       "One concise email. Five minutes. Every Tuesday. Essential AI news & trends, production-ready libraries, powerful AI tools, and real-world code examples",
-  //     link: "https://aidevroundup.com/?ref=devportfolio",
-  //     skills: ["React", "Node.js", "AWS"],
-  //   },
-  //   {
-  //     name: "Chrome Extension Mastery: Build Full-Stack Extensions with React & Node.js",
-  //     description:
-  //       "Master the art of building production-ready, full-stack Chrome Extensions using modern web technologies and best practices",
-  //     link: "https://fullstackextensions.com/?ref=devportfolio",
-  //     skills: ["React", "Node.js", "AWS"],
-  //   },
-  //   {
-  //     name: "ExtensionKit",
-  //     description:
-  //       "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
-  //     link: "https://extensionkit.io/?ref=devportfolio",
-  //     skills: ["React", "Node.js", "AWS"],
-  //   },
-  // ],
+
+  projects: [],
+
   experience: [
-    {
-      company: "Study Edge",
-      title: "Lecturer & Study Expert",
-      dateRange: "Jul 2024 - Present",
-      bullets: [
-        "I provide resources for over 1000 students per semester in physics I and II, with and without calculus.",
-        "Created and produced over 600 e-learning videos, designed to support students at the University of Florida.",
-        "Achieved significant reach and engagement, with thousands of total watch hours across the video library.",
-      ],
-    },
-    {
-      company: "SHPE at the University of Florida",
-      title: "iOS Development Junior Product Manager",
-      dateRange: "Aug 2025 - May 2026",
-      bullets: [
-        "Organized and conducted a 4-5 week training program to introduce 8 new developers to XCode, Swift, Apollo, GraphQL, GitHub, and Asana.",
-        "Assessed each new developer’s progress by evaluating their final project to ensure it meets quality and functionality standards.",
-        "Monitored the integration of new developers into the team, ensuring a smooth transition into regular project work after training completion.",
-      ],
-    },
-    {
-      company: "SHPE at the University of Florida",
-      title: "iOS Developer",
-      dateRange: "Jan 2025 - Aug 2025",
-      bullets: [
-        "Contributed 1000+ lines of Swift documentation.",
-        "Implemented a custom GitHub Actions CI/CD workflow to automate Documentation branch maintenance and improve developer productivity.",
-      ],
-    },
-    {
-      company: "Indian River State College",
-      title: "Teaching Assistant & Tutor",
-      dateRange: "May 2023 - June 2024",
-      bullets: [
-        "Teaching Assistant for MAC1147 F'23 & S'24",
-        "Provided academic support in undergraduate math courses, through Calculus III, assisting students in developing conceptual understanding and problem-solving techniques.",
-        "Led weekly discussion sections and review sessions, reinforcing complex topics through detailed explanations and guided practice.",
-      ],
-    },
+      {
+        company: "Study Edge",
+        title: "Lecturer & Study Expert",
+        dateRange: "Jul 2024 - Present",
+        bullets: [
+          "I provide resources for over 1000 students per semester in physics I and II, with and without calculus.",
+          "Created and produced over 600 e-learning videos, designed to support students at the University of Florida.",
+          "Achieved significant reach and engagement, with thousands of total watch hours across the video library.",
+        ],
+      },
+      {
+        company: "SHPE at the University of Florida",
+        title: "iOS Development Junior Product Manager",
+        dateRange: "Aug 2025 - May 2026",
+        bullets: [
+          "Organized and conducted a 4-5 week training program to introduce 8 new developers to XCode, Swift, Apollo, GraphQL, GitHub, and Asana.",
+          "Assessed each new developer’s progress by evaluating their final project to ensure it meets quality and functionality standards.",
+          "Monitored the integration of new developers into the team, ensuring a smooth transition into regular project work after training completion.",
+        ],
+      },
+      {
+        company: "SHPE at the University of Florida",
+        title: "iOS Developer",
+        dateRange: "Jan 2025 - Aug 2025",
+        bullets: [
+          "Contributed 1000+ lines of Swift documentation.",
+          "Implemented a custom GitHub Actions CI/CD workflow to automate Documentation branch maintenance and improve developer productivity.",
+        ],
+      },
+      {
+        company: "Indian River State College",
+        title: "Teaching Assistant & Tutor",
+        dateRange: "May 2023 - June 2024",
+        bullets: [
+          "Teaching Assistant for MAC1147 F'23 & S'24",
+          "Provided academic support in undergraduate math courses, through Calculus III, assisting students in developing conceptual understanding and problem-solving techniques.",
+          "Led weekly discussion sections and review sessions, reinforcing complex topics through detailed explanations and guided practice.",
+        ],
+      },
   ],
+  
   education: [
     {
       school: "University of Florida",
@@ -129,6 +114,7 @@ export const siteConfig = {
       ],
     },
   ],
+  
   coursework: [
     // University of Florida
     {
