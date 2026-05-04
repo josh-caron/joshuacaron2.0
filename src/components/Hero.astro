@@ -40,7 +40,7 @@ import { siteConfig } from "../config";
           x="50"
           y="50"
           fill={siteConfig.accentColor}
-          font-family="monospace"
+          font-family="Playfair Display, serif"
           font-size="24"
           transform="rotate(-15)">&lt;/&gt;</text
         >
@@ -48,7 +48,7 @@ import { siteConfig } from "../config";
           x="150"
           y="100"
           fill={siteConfig.accentColor}
-          font-family="monospace"
+          font-family="Playfair Display, serif"
           font-size="20"
           transform="rotate(10)">{}</text
         >
@@ -56,7 +56,7 @@ import { siteConfig } from "../config";
           x="250"
           y="80"
           fill={siteConfig.accentColor}
-          font-family="monospace"
+          font-family="Playfair Display, serif"
           font-size="18"
           transform="rotate(-5)">=&gt;</text
         >
@@ -64,7 +64,7 @@ import { siteConfig } from "../config";
           x="100"
           y="200"
           fill={siteConfig.accentColor}
-          font-family="monospace"
+          font-family="Playfair Display, serif"
           font-size="22"
           transform="rotate(15)">[]</text
         >
@@ -72,7 +72,7 @@ import { siteConfig } from "../config";
           x="300"
           y="180"
           fill={siteConfig.accentColor}
-          font-family="monospace"
+          font-family="Playfair Display, serif"
           font-size="20"
           transform="rotate(-10)">&lt;&gt;</text
         >
@@ -80,7 +80,7 @@ import { siteConfig } from "../config";
           x="200"
           y="250"
           fill={siteConfig.accentColor}
-          font-family="monospace"
+          font-family="Playfair Display, serif"
           font-size="24"
           transform="rotate(5)">()</text
         >
@@ -88,7 +88,7 @@ import { siteConfig } from "../config";
           x="50"
           y="320"
           fill={siteConfig.accentColor}
-          font-family="monospace"
+          font-family="Playfair Display, serif"
           font-size="18"
           transform="rotate(-8)">::</text
         >
@@ -96,7 +96,7 @@ import { siteConfig } from "../config";
           x="350"
           y="300"
           fill={siteConfig.accentColor}
-          font-family="monospace"
+          font-family="Playfair Display, serif"
           font-size="22"
           transform="rotate(12)">==</text
         >
@@ -104,7 +104,7 @@ import { siteConfig } from "../config";
           x="150"
           y="350"
           fill={siteConfig.accentColor}
-          font-family="monospace"
+          font-family="Playfair Display, serif"
           font-size="20"
           transform="rotate(-15)">++</text
         >
@@ -112,7 +112,7 @@ import { siteConfig } from "../config";
           x="250"
           y="370"
           fill={siteConfig.accentColor}
-          font-family="monospace"
+          font-family="Playfair Display, serif"
           font-size="24"
           transform="rotate(8)">;</text
         >
@@ -129,15 +129,22 @@ import { siteConfig } from "../config";
       height="100%"
       stroke-width={0}></rect>
   </svg>
-  <div class="h-full mx-auto p-8 sm:p-12 md:p-24 flex items-center">
-    <div>
+  <div class="h-full mx-auto p-8 sm:p-12 md:p-24 flex items-center justify-between gap-12">
+    <div class="hidden lg:flex flex-shrink-0 animate-fade-in animation-delay-300">
+      <img
+        src="/headshot.jpg"
+        alt="Josh Caron"
+        class="w-80 h-80 object-cover rounded-full shadow-xl"
+      />
+    </div>
+    <div class="flex-1">
       <h2
         class="text-pretty text-xl sm:text-2xl md:text-5xl font-bold tracking-tight text-gray-700 animate-fade-in"
       >
         Hello! 👋
       </h2>
       <h1
-        class="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200"
+        class="mt-2 sm:mt-4 md:mt-6 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200"
       >
         I'm <span style={{ color: siteConfig.accentColor }}
           >{siteConfig.name}</span
@@ -148,6 +155,20 @@ import { siteConfig } from "../config";
       >
         {siteConfig.title}
       </p>
+      {siteConfig.funFacts && siteConfig.funFacts.length > 0 && (
+        <div class="mt-6 sm:mt-8 md:mt-10 h-12 sm:h-16 md:h-20 flex items-center overflow-hidden">
+          <div class="fun-facts-carousel w-full">
+            {siteConfig.funFacts.map((fact, index) => (
+              <p
+                class="text-sm sm:text-base md:text-lg text-gray-500 font-medium animate-fade-in-out"
+                style={`--fact-index: ${index}`}
+              >
+                Fun fact: {fact}
+              </p>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   </div>
   <div
