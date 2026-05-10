@@ -156,7 +156,7 @@ export const siteConfig = {
       code: "CIS4301",
       title: "Information and Database Systems I",
       grade: "A",
-      semester: "Fall 2025",
+      semester: "Fall 2025", 
       description: "Principles of SQL programming and database design",
     },
     {
