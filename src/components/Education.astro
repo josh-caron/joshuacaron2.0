@@ -1,58 +1,82 @@
 ---
 import { siteConfig } from "../config";
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+
+function getInitials(name: string) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+}
 ---
 
 {
   hasEducation && (
-    <section id="education" class="p-8 sm:p-12 md:p-16 lg:p-24">
-      <div>
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          <div class="lg:col-span-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+    <section id="education" class="px-4 py-2 sm:px-6 sm:py-3 md:px-8 lg:px-12">
+      <div class="mx-auto max-w-4xl">
+        <div class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6 md:p-8">
+          <div class="mb-4 flex items-center gap-2.5 sm:mb-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke={siteConfig.accentColor}
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" />
+              <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" />
+            </svg>
+            <h2 class="text-xl font-bold text-gray-900 sm:text-2xl">
               Education
             </h2>
-            <div
-              class="w-[75px] h-[5px] mt-2 rounded-full"
-              style={`background-color: ${siteConfig.accentColor}`}
-            />
           </div>
 
-          <div class="lg:col-span-8">
-            <div class="space-y-8">
-              {siteConfig.education.map((edu) => (
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-300">
-                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
-                    <div>
-                      <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">
-                        {edu.degree}
-                      </h3>
-                      <p
-                        class="text-lg sm:text-xl"
-                        style={`color: ${siteConfig.accentColor}`}
-                      >
-                        {edu.school}
-                      </p>
-                    </div>
-                    <span class="text-sm sm:text-base text-gray-500 mt-2 sm:mt-0">
-                      {edu.dateRange}
-                    </span>
+          <div class="divide-y divide-gray-100">
+            {siteConfig.education.map((edu) => (
+              <div class="flex gap-3 py-4 first:pt-0 last:pb-0 sm:gap-4 sm:py-5">
+                <div
+                  class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg text-sm font-bold text-white sm:h-13 sm:w-13 md:h-14 md:w-14 md:text-base"
+                  style={`background-color: ${siteConfig.accentColor}`}
+                >
+                  {getInitials(edu.school)}
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                    <h3 class="text-base font-semibold text-gray-900 sm:text-lg">
+                      {edu.school}
+                    </h3>
+                    <span class="text-sm text-gray-500">{edu.dateRange}</span>
                   </div>
+                  {edu.degree && (
+                    <p class="text-sm text-gray-600 sm:text-base">
+                      {edu.degree}
+                    </p>
+                  )}
 
-                  <ul class="space-y-2">
-                    {edu.achievements.map((achievement) => (
-                      <li class="flex items-start">
-                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0" />
-                        <span class="text-base sm:text-lg text-gray-600">
-                          {achievement}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  {edu.achievements && edu.achievements.length > 0 && (
+                    <ul class="mt-2 space-y-1.5">
+                      {edu.achievements.map((achievement) => (
+                        <li class="flex items-start gap-2">
+                          <span class="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-gray-400" />
+                          <span class="text-sm text-gray-600 sm:text-base">
+                            {achievement}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
                   {edu.relevantCourses && edu.relevantCourses.length > 0 && (
-                    <details class="group mt-5 rounded-lg border border-gray-100 bg-gray-50 px-4 py-3">
-                      <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base sm:text-lg font-medium text-gray-800">
+                    <details class="group mt-3 rounded-lg border border-gray-100 bg-gray-50 px-3 py-2.5 sm:px-4 sm:py-3">
+                      <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-medium text-gray-800 sm:text-base">
                         <span>Relevant Courses</span>
                         <span class="text-gray-400 transition-transform duration-200 group-open:rotate-180">
                           ▾
@@ -60,7 +84,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                       </summary>
                       <ul class="mt-3 flex flex-wrap gap-2">
                         {edu.relevantCourses.map((course) => (
-                          <li class="rounded-full bg-white px-3 py-1 text-sm sm:text-base text-gray-600 border border-gray-200">
+                          <li class="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600 sm:text-sm">
                             {course}
                           </li>
                         ))}
@@ -68,7 +92,8 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                           <li>
                             <button
                               onclick="const table = document.getElementById('courses-table'); table.classList.toggle('hidden'); this.textContent = table.classList.contains('hidden') ? '→ See All Courses' : '← Hide Courses'; if (!table.classList.contains('hidden')) { setTimeout(() => table.scrollIntoView({ behavior: 'smooth' }), 100); }"
-                              class="rounded-full bg-gradient-to-r from-blue-50 to-blue-100 px-4 py-1 text-sm sm:text-base text-blue-700 border border-blue-300 hover:from-blue-100 hover:to-blue-200 transition-all cursor-pointer font-medium"
+                              class="cursor-pointer rounded-full border px-3 py-1 text-xs font-medium transition-colors sm:text-sm"
+                              style={`border-color: ${siteConfig.accentColor}55; color: ${siteConfig.accentColor}; background-color: ${siteConfig.accentColor}0d`}
                             >
                               → See All Courses
                             </button>
@@ -78,72 +103,72 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
                     </details>
                   )}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
+
+          {siteConfig.coursework && siteConfig.coursework.length > 0 && (
+            <div id="courses-table" class="hidden mt-6 scroll-mt-20 border-t border-gray-100 pt-6">
+              <div class="overflow-x-auto rounded-lg border border-gray-100">
+                <table class="w-full">
+                  <thead>
+                    <tr class="border-b border-gray-200 bg-gray-50">
+                      <th class="px-3 py-2.5 text-left text-xs font-semibold text-gray-900 sm:px-4 sm:py-3 sm:text-sm">
+                        Course Code
+                      </th>
+                      <th class="px-3 py-2.5 text-left text-xs font-semibold text-gray-900 sm:px-4 sm:py-3 sm:text-sm">
+                        Course Title
+                      </th>
+                      <th class="px-3 py-2.5 text-left text-xs font-semibold text-gray-900 sm:px-4 sm:py-3 sm:text-sm">
+                        Grade
+                      </th>
+                      <th class="px-3 py-2.5 text-left text-xs font-semibold text-gray-900 sm:px-4 sm:py-3 sm:text-sm">
+                        Semester
+                      </th>
+                      <th class="px-3 py-2.5 text-left text-xs font-semibold text-gray-900 sm:px-4 sm:py-3 sm:text-sm">
+                        Description
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {siteConfig.coursework.map((course, index) => (
+                      <tr
+                        class={`border-b border-gray-100 last:border-b-0 ${
+                          index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                        } transition-colors hover:bg-blue-50`}
+                      >
+                        <td class="px-3 py-2.5 font-mono text-xs text-gray-600 sm:px-4 sm:py-3 sm:text-sm">
+                          {course.code}
+                        </td>
+                        <td class="px-3 py-2.5 text-xs font-medium text-gray-900 sm:px-4 sm:py-3 sm:text-sm">
+                          {course.title}
+                        </td>
+                        <td class="px-3 py-2.5 text-xs sm:px-4 sm:py-3 sm:text-sm">
+                          <span
+                            class={`inline-block rounded px-2 py-1 font-medium ${
+                              course.grade === "IP"
+                                ? "bg-blue-100 text-blue-700"
+                                : "bg-green-100 text-green-700"
+                            }`}
+                          >
+                            {course.grade}
+                          </span>
+                        </td>
+                        <td class="px-3 py-2.5 text-xs text-gray-600 sm:px-4 sm:py-3 sm:text-sm">
+                          {course.semester}
+                        </td>
+                        <td class="px-3 py-2.5 text-xs text-gray-600 sm:px-4 sm:py-3 sm:text-sm">
+                          {course.description}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-
-      {siteConfig.coursework && siteConfig.coursework.length > 0 && (
-        <div id="courses-table" class="hidden mt-16 scroll-mt-20">
-            <div class="overflow-x-auto bg-white rounded-lg shadow-sm border border-gray-100">
-              <table class="w-full">
-                <thead>
-                  <tr class="border-b border-gray-200 bg-gray-50">
-                    <th class="px-4 sm:px-6 py-3 sm:py-4 text-left text-sm sm:text-base font-semibold text-gray-900">
-                      Course Code
-                    </th>
-                    <th class="px-4 sm:px-6 py-3 sm:py-4 text-left text-sm sm:text-base font-semibold text-gray-900">
-                      Course Title
-                    </th>
-                    <th class="px-4 sm:px-6 py-3 sm:py-4 text-left text-sm sm:text-base font-semibold text-gray-900">
-                      Grade
-                    </th>
-                    <th class="px-4 sm:px-6 py-3 sm:py-4 text-left text-sm sm:text-base font-semibold text-gray-900">
-                      Semester
-                    </th>
-                    <th class="px-4 sm:px-6 py-3 sm:py-4 text-left text-sm sm:text-base font-semibold text-gray-900">
-                      Description
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {siteConfig.coursework.map((course, index) => (
-                    <tr
-                      class={`border-b border-gray-100 ${
-                        index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                      } hover:bg-blue-50 transition-colors`}
-                    >
-                      <td class="px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base font-mono text-gray-600">
-                        {course.code}
-                      </td>
-                      <td class="px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base font-medium text-gray-900">
-                        {course.title}
-                      </td>
-                      <td class="px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base">
-                        <span
-                          class={`inline-block px-2 py-1 rounded font-medium ${
-                            course.grade === "IP"
-                              ? "bg-blue-100 text-blue-700"
-                              : "bg-green-100 text-green-700"
-                          }`}
-                        >
-                          {course.grade}
-                        </span>
-                      </td>
-                      <td class="px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-gray-600">
-                        {course.semester}
-                      </td>
-                      <td class="px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base text-gray-600">
-                        {course.description}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
     </section>
   )
 }

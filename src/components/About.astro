@@ -1,44 +1,53 @@
 ---
 import { siteConfig } from "../config";
+const hasSkills = siteConfig.skills && siteConfig.skills.length > 0;
 ---
 
-<section id="about" class="p-8 sm:p-12 md:p-16 lg:p-24">
-  <div>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-      <div class="lg:col-span-4">
-        <h2
-          class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
+<section id="about" class="px-4 py-2 sm:px-6 sm:py-3 md:px-8 lg:px-12">
+  <div class="mx-auto max-w-4xl">
+    <div class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6 md:p-8">
+      <div class="mb-4 flex items-center gap-2.5 sm:mb-5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke={siteConfig.accentColor}
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         >
-          About Me
-        </h2>
-        <div
-          class="w-[75px] h-[5px] mt-2 rounded-full"
-          style={`background-color: ${siteConfig.accentColor}`}
-        >
-        </div>
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <circle cx="12" cy="12" r="9"></circle>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          <polyline points="11 12 12 12 12 16 13 16"></polyline>
+        </svg>
+        <h2 class="text-xl font-bold text-gray-900 sm:text-2xl">About</h2>
       </div>
 
-      <div class="lg:col-span-8 space-y-8">
-        <div class="space-y-4">
-          {siteConfig.aboutMe.split('\n\n').map((paragraph) => (
-            <p class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-600">
-              {paragraph}
-            </p>
-          ))}
-        </div>
+      <div class="space-y-3">
+        {siteConfig.aboutMe.split("\n\n").map((paragraph) => (
+          <p class="text-base leading-relaxed text-gray-700 sm:text-lg">
+            {paragraph}
+          </p>
+        ))}
+      </div>
 
-        <div class="pt-4">
-          <div class="flex flex-wrap gap-3">
-            {
-              siteConfig.skills.map((skill) => (
-                <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200">
-                  {skill}
-                </span>
-              ))
-            }
+      {hasSkills && (
+        <div class="mt-6 border-t border-gray-100 pt-5">
+          <h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500">
+            Skills
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {siteConfig.skills.map((skill) => (
+              <span class="rounded-full bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-800 transition-colors duration-200 hover:bg-gray-200">
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
-      </div>
+      )}
     </div>
   </div>
 </section>

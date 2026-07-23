@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Josh Caron",
   title: "A Second Year CS + Math Student at UF",
   description: "Portfolio website of Josh Caron",
-  accentColor: "#1d4ed8",
+  accentColor: "#0a66c2",
   
   funFacts: [
     "I created a 31-video Calculus II lecture series on YouTube at 16 years old",
